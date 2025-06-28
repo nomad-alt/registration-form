@@ -1,4 +1,4 @@
-import { use, useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 
 const PasswordErrorMessage = () => {
@@ -92,6 +92,9 @@ function App() {
               onBlur={() => setPassword({...password, isTouched: true})}
               placeholder='Password' 
             />
+            {password.isTouched && password.value.length < 8 ? ( 
+             <PasswordErrorMessage /> 
+           ) : null} 
           </div>
           <div className='Field'>
           <label>
