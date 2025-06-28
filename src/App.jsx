@@ -1,12 +1,82 @@
-import { useState } from 'react'
+import { use, useState } from 'react'
 import './App.css'
 
+const PasswordErrorMessage = () => {
+  return (
+    <p className='FieldError'>Password should have at least 8 characters</p>
+  )
+}
+
 function App() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState({
+    value: "",
+    isTouched: false,
+  })
+  const [role, setRole] = useState("role");
+
+  const getIsFormValid = () => {
+    // Implement this function
+    return true;
+  }
+
+  const clearForm = () => {
+    // Implement this function
+    return true;
+  }
+
+  const handleSubmit = () => {
+    alert("Account created!");
+    clearForm();
+  }
 
   return (
-    <>
-      
-    </>
+    <div className='App'>
+      <form onSubmit={handleSubmit}>
+        <fieldset>
+          <h2>Sign Up</h2>
+          <div className='Field'>
+            <label>
+              First Name <sup>*</sup>
+            </label>
+            <input placeholder='First Name' />
+          </div>
+          <div className='Field'>
+            <label>
+              Last Name
+            </label>
+            <input placeholder='Last Name' />
+          </div>
+          <div className='Field'>
+            <label>
+              Email address <sup>*</sup>
+            </label>
+            <input placeholder='Email address' />
+          </div>
+          <div className='Field'>
+            <label>
+              Password <sup>*</sup>
+            </label>
+            <input placeholder='Password' />
+          </div>
+          <div className='Field'>
+          <label>
+            Role <sup>*</sup>
+          </label>
+          <select>
+            <option value="role">Role</option>
+            <option value="individual">Individual</option>
+            <option value="business">Business</option>
+          </select>
+          </div>
+          <button type='submit' disabled={!getIsFormValid()}>
+            Create Account
+          </button>
+        </fieldset>
+      </form>
+    </div>
   )
 }
 
